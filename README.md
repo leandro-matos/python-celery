@@ -48,6 +48,10 @@ gunicorn -c setup.py run:app
 - Executando o celery, necessário iniciar um container do rabbitmq:
 
 ```bash
+docker container run --rm -d --name rabbitmq1 -p 81:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
+```
+
+```bash
 celery --app=app.celery_runner worker --loglevel=info
 ```
 
